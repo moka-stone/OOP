@@ -1,16 +1,18 @@
-Lab 1
-Completed by Makar Spetsyian, group 353504
+# Lab 1
+# Completed by Makar Spetsyian, group 353504
 
-Functional requirements
-The program must be able to:
+## Functional requirements
+ The program must be able to:
 
-draw 3 types of figures: rectangle, triangle, ellipse
-erase an object
-move object
-add a background to a figure
-save canvas as a file
-load from file
-undo/redo action
-Warning: all numeric input values must be integers. If something goes wrong error will be shown in the screen.
+- draw 3 types of figures: rectangle, triangle, ellipse
+- erase an object
+- move object
+- add a background to a figure
+- save canvas as a file
+- load from file
+- undo/redo action
 
-Objects may be displayed with altered proportions due to the peculiarities of console output.
+  Warning: all numeric input values must be integers. If something goes wrong error will be shown in the screen.
+
+
+  Objects may be displayed with altered proportions due to the peculiarities of console output.
