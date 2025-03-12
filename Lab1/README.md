@@ -1,5 +1,5 @@
 Lab 1
-Completed by Fiodar Kavalchuk, group 353504
+Completed by Makar Spetsyian, group 353504
 
 Functional requirements
 The program must be able to:
