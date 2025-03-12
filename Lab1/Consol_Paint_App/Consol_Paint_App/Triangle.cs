@@ -27,12 +27,13 @@ namespace Consol_Paint_App
             double area = Math.Sqrt(s * (s - side1) * (s - side2) * (s - side3)); // Площадь по формуле Герона
 
             // Высота от основания (side1) до вершины (x3, y3)
-            double height = (2 * area) / side1;
+            int height = (int)((2 * area) / side1);
 
             int x1 = x; // первая вершина (x, y)
             int y1 = y;
             int x2 = x + side1; // вторая вершина
             int y2 = y;
+            
             int x3 = x + side1 / 2; // третья вершина
             int y3 = (int)(y - height); // высота
 
@@ -41,18 +42,27 @@ namespace Consol_Paint_App
             for (int i = 0; i <= height; i++)
             {
                 // Вычисляем положение для левых и правых точек
-                if (i <= height)
+                if (i < height)
                 {
                     Console.SetCursorPosition(x1 + i, y1 - i); // Левый край
                     Console.Write('█');
                     Console.SetCursorPosition(x2 - i, y2 - i); // Правый край
                     Console.Write('█');
                 }
+                if (i < height) // Заполняем только если это не последний уровень
+                {
+                    for (int fillX = x1+i+1; fillX < x2-i; fillX++) // Заполнение между краями
+                    {
+                        Console.SetCursorPosition(fillX, y1 - i);
+                        Console.Write('█');
+                    }
+                }
 
                 if (i == height)
                 {
                     Console.SetCursorPosition(x3, y3); // Верхняя вершина
                     Console.Write('█');
+                   
                 }
             }
 

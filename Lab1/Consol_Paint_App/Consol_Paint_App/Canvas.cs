@@ -49,7 +49,8 @@ namespace Consol_Paint_App
         }
         public void DrawAll()
         {
-
+            Console.SetCursorPosition(0, 0);
+            DrawFigureArea();
             foreach (var figure in figures)
             {
                 figure.Draw();
