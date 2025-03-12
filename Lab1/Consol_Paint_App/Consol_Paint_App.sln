@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.13.35806.99 d17.13
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Consol_Paint_App", "Consol_Paint_App\Consol_Paint_App.csproj", "{D044B6D2-3AAB-48FD-8691-E143A62C8911}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D044B6D2-3AAB-48FD-8691-E143A62C8911}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D044B6D2-3AAB-48FD-8691-E143A62C8911}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D044B6D2-3AAB-48FD-8691-E143A62C8911}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D044B6D2-3AAB-48FD-8691-E143A62C8911}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {80935CD1-F832-4A1E-9D54-4BA52E87002B}
+	EndGlobalSection
+EndGlobal
