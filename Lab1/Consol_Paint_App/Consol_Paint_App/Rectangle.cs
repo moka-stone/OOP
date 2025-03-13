@@ -9,13 +9,14 @@ namespace Consol_Paint_App
     public class Rectangle : IFigure
     {
         private int x, y, width, height;
-        private ConsoleColor backgroundColor=ConsoleColor.Black;
+        private ConsoleColor backgroundColor;
         public Rectangle(int x, int y, int width, int height)
         {
             this.x = x;
             this.y = y;
             this.width = width;
             this.height = height;
+            this.backgroundColor = ConsoleColor.Black;
         }
         public void Draw()
         {

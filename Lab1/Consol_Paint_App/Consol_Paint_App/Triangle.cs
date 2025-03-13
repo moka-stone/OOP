@@ -9,7 +9,7 @@ namespace Consol_Paint_App
     public class Triangle : IFigure
     {
         private int x, y,side1,side2,side3;
-        private ConsoleColor backgroundColor = ConsoleColor.Black;
+        private ConsoleColor backgroundColor;
         public Triangle(int x, int y,int side1,int side2,int side3)
         {
             this.x = x;
@@ -17,6 +17,7 @@ namespace Consol_Paint_App
             this.side1 = side1;
             this.side2 = side2;
             this.side3 = side3;
+            this.backgroundColor = ConsoleColor.Black;
         }
         public void Draw()
         {

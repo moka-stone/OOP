@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -82,14 +83,42 @@ namespace Consol_Paint_App
         }
         public void ChangeBackgroundCurrentFigure(string color)
         {
-            //if (currentFigureIndex >= 0) 
-                //figures[currentFigureIndex].AddBackground(ConsoleColor.);
+            if (currentFigureIndex >= 0) {
+                if (Enum.TryParse(color, true, out ConsoleColor backgroundColor))
+                {
+                    figures[currentFigureIndex].AddBackground(backgroundColor);
+                }
+                else
+                {
+                    Console.WriteLine("Invalid color. Please enter a valid console color name.");
+                }
+            } 
         }
         public string GetCurrentFigureInfo()
         {
             if (currentFigureIndex >= 0)
                 return figures[currentFigureIndex].GetInfo();
             return "No figure selected.";
+        }
+        public void SaveToFile(string fileName)
+        {
+            var json = JsonConvert.SerializeObject(figures, Formatting.Indented);
+            File.WriteAllText(fileName, json);
+            Console.WriteLine("Figures saved to " + fileName);
+        }
+        public void LoadFromFile(string fileName)
+        {
+            if (File.Exists(fileName))
+            {
+                var json = File.ReadAllText(fileName);
+                figures = JsonConvert.DeserializeObject<List<IFigure>>(json);
+                currentFigureIndex = -1; // Сбрасываем индекс текущей фигуры после загрузки
+                Console.WriteLine("Figures loaded from " + fileName);
+            }
+            else
+            {
+                Console.WriteLine("File does not exist");
+            }
         }
 
 

@@ -1,4 +1,5 @@
-﻿namespace Consol_Paint_App 
+﻿
+namespace Consol_Paint_App 
 {
     class Program 
     {
@@ -131,6 +132,7 @@
                         // Сохранение файла
                         Console.WriteLine("Enter filename to save:");
                         string saveFileName = Console.ReadLine();
+                        canvas.SaveToFile(saveFileName);
                         
                         break;
 
@@ -138,7 +140,8 @@
                         // загрузка файла
                         Console.WriteLine("Enter filename to load:");
                         string loadFileName = Console.ReadLine();
-                        
+                        canvas.LoadFromFile(loadFileName);
+
                         break;
 
                     case "5":
