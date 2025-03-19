@@ -1,10 +1,14 @@
 ﻿
+using System.Diagnostics;
+
 namespace Consol_Paint_App 
 {
     class Program 
     {
         static void Main(string[] args)
         {
+            
+           
             Console.BackgroundColor = ConsoleColor.Black;
             Console.SetWindowSize(213, 49);
             Console.SetBufferSize(250, 100);
@@ -26,7 +30,7 @@ namespace Consol_Paint_App
                     Console.Write(new string(' ', consoleWidth)); // Очищаем пространство под холстом
                 }
                 Console.SetCursorPosition(0, figureAreaHeight + 1); // Возвращаем курсор обратно для нового вывода
-                Console.WriteLine("Menu:");
+                Console.WriteLine("MENU");
                 Console.WriteLine("0 - exit (without saving)");
                 Console.WriteLine("1 - choose figure for drawing");
                 Console.WriteLine("2 - object selection menu");
@@ -54,7 +58,11 @@ namespace Consol_Paint_App
                             int y = int.Parse(Console.ReadLine());
                             int width = int.Parse(Console.ReadLine());
                             int height = int.Parse(Console.ReadLine());
-                            canvas.AddFigure(new Rectangle(x, y, width, height));
+                            if (Validator.ValidateRectParams(x, y, width, height))
+                            {
+                                canvas.AddFigure(new Rectangle(x, y, width, height));
+                            }
+                            else { Console.WriteLine("Bad params"); }
                         }
                         if (figureChoice == "2")
                         {
@@ -65,7 +73,11 @@ namespace Consol_Paint_App
                             int side1 = int.Parse(Console.ReadLine());
                             int side2 = int.Parse(Console.ReadLine());
                             int side3 = int.Parse(Console.ReadLine());
-                            canvas.AddFigure(new Triangle(x, y, side1, side2, side3));
+                            if (Validator.ValidateTriangleParams(x, y, side1, side2, side3))
+                            {
+                                canvas.AddFigure(new Triangle(x, y, side1, side2, side3));
+                            }
+                            else { Console.WriteLine("Bad params"); }
                         }
                         if (figureChoice == "3")
                         {
@@ -75,7 +87,11 @@ namespace Consol_Paint_App
                             int y = int.Parse(Console.ReadLine());
                             int width = int.Parse(Console.ReadLine());
                             int height = int.Parse(Console.ReadLine());
-                            canvas.AddFigure(new Ellipse(x, y, width, height));
+                            if (Validator.ValidateEllipseParams(x, y, width, height))
+                            {
+                                canvas.AddFigure(new Ellipse(x, y, width, height));
+                            }
+                            else { Console.WriteLine("Bad params"); }
                         }
                         break;
 
@@ -117,7 +133,7 @@ namespace Consol_Paint_App
                                     canvas.EraseCurrentFigure();
                                     break;
                                 case "b":
-                                    Console.WriteLine("Enter background color:");
+                                    Console.WriteLine("Enter background color:");                                 
                                     string color = Console.ReadLine();
                                     canvas.ChangeBackgroundCurrentFigure(color);
                                     break;
@@ -155,7 +171,8 @@ namespace Consol_Paint_App
 
                 canvas.DrawAll(); // Отрисовать все фигуры
                 Console.SetCursorPosition(0, 42);
-            }   
+            }
+            UnitTesting.RunAssertions();
 
 
         }

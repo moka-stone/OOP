@@ -19,6 +19,7 @@ namespace Consol_Paint_App
             this.side3 = side3;
             this.backgroundColor = ConsoleColor.Black;
         }
+        public Triangle() { }
         public void Draw()
         {
             Console.BackgroundColor = backgroundColor; // Устанавливаем цвет фона
@@ -46,23 +47,23 @@ namespace Consol_Paint_App
                 if (i < height)
                 {
                     Console.SetCursorPosition(x1 + i, y1 - i); // Левый край
-                    Console.Write('█');
+                    Console.Write('#');
                     Console.SetCursorPosition(x2 - i, y2 - i); // Правый край
-                    Console.Write('█');
+                    Console.Write('#');
                 }
                 if (i < height) // Заполняем только если это не последний уровень
                 {
                     for (int fillX = x1+i+1; fillX < x2-i; fillX++) // Заполнение между краями
                     {
                         Console.SetCursorPosition(fillX, y1 - i);
-                        Console.Write('█');
+                        Console.Write('#');
                     }
                 }
 
                 if (i == height)
                 {
                     Console.SetCursorPosition(x3, y3); // Верхняя вершина
-                    Console.Write('█');
+                    Console.Write('#');
                    
                 }
             }

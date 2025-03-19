@@ -11,13 +11,14 @@ namespace Consol_Paint_App
     {
         private List<IFigure> figures = new List<IFigure>();
         private int currentFigureIndex = -1;
+
         public void AddFigure(IFigure figure)
         {
             figures.Add(figure);
             currentFigureIndex = figures.Count - 1;
 
         }
-        public void DrawFigureArea() 
+        public void DrawFigureArea()
         {
             for (int j = 0; j <= 42; j++)
             {
@@ -84,15 +85,27 @@ namespace Consol_Paint_App
         public void ChangeBackgroundCurrentFigure(string color)
         {
             if (currentFigureIndex >= 0) {
-                if (Enum.TryParse(color, true, out ConsoleColor backgroundColor))
+               
+                if (color == "Red")
                 {
-                    figures[currentFigureIndex].AddBackground(backgroundColor);
+                    figures[currentFigureIndex].AddBackground(ConsoleColor.Red);
+                    
+                }
+                else if (color == "Blue")
+                {
+                    figures[currentFigureIndex].AddBackground(ConsoleColor.Blue);
+
+                }
+                else if (color == "Green")
+                {
+                    figures[currentFigureIndex].AddBackground(ConsoleColor.Green);
+
                 }
                 else
                 {
-                    Console.WriteLine("Invalid color. Please enter a valid console color name.");
-                }
-            } 
+                    Console.WriteLine("Неверный цвет.");
+                }                        
+            }
         }
         public string GetCurrentFigureInfo()
         {
@@ -102,7 +115,11 @@ namespace Consol_Paint_App
         }
         public void SaveToFile(string fileName)
         {
-            var json = JsonConvert.SerializeObject(figures, Formatting.Indented);
+            var settings = new JsonSerializerSettings
+            {
+                TypeNameHandling = TypeNameHandling.Auto
+            };
+            var json = JsonConvert.SerializeObject(figures, settings);
             File.WriteAllText(fileName, json);
             Console.WriteLine("Figures saved to " + fileName);
         }
@@ -110,9 +127,13 @@ namespace Consol_Paint_App
         {
             if (File.Exists(fileName))
             {
+                var settings = new JsonSerializerSettings
+                {
+                    TypeNameHandling = TypeNameHandling.Auto
+                };
                 var json = File.ReadAllText(fileName);
-                figures = JsonConvert.DeserializeObject<List<IFigure>>(json);
-                currentFigureIndex = -1; // Сбрасываем индекс текущей фигуры после загрузки
+                figures = JsonConvert.DeserializeObject<List<IFigure>>(json,settings);
+                currentFigureIndex = figures.Count - 1; 
                 Console.WriteLine("Figures loaded from " + fileName);
             }
             else
@@ -120,7 +141,6 @@ namespace Consol_Paint_App
                 Console.WriteLine("File does not exist");
             }
         }
-
-
     }
+    
 }

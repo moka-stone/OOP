@@ -18,13 +18,17 @@ namespace Consol_Paint_App
             this.height = height;
             this.backgroundColor = ConsoleColor.Black;
         }
+        public Rectangle() 
+        { 
+        }
+
         public void Draw()
         {
             Console.BackgroundColor = backgroundColor; // Устанавливаем цвет фона
             for (int i = 0; i < height; i++)
             {
                 Console.SetCursorPosition(x+1, y + i+1); // Устанавливаем позицию курсора
-                Console.Write(new string('█', width)); // Рисуем строку из символов
+                Console.Write(new string('#', width)); // Рисуем строку из символов
             }
             Console.ResetColor(); // Сбрасываем цвет консоли
         }
@@ -43,6 +47,7 @@ namespace Consol_Paint_App
         public void AddBackground(ConsoleColor color)
         {
             backgroundColor = color;
+            
         }
         public string GetInfo()
         {

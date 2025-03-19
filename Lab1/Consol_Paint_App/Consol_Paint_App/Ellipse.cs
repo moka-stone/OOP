@@ -18,6 +18,7 @@ namespace Consol_Paint_App
             this.height = height;
             this.backgroundColor = ConsoleColor.Black;
         }
+        public Ellipse() { }
         public void Draw()
         {
             Console.BackgroundColor = backgroundColor; // Устанавливаем цвет фона
@@ -32,7 +33,7 @@ namespace Consol_Paint_App
                     {
                         // Устанавливаем позицию на консоли, добавляя смещение x и y
                         Console.SetCursorPosition(x + j, y + i);
-                        Console.Write('█'); // Рисуем точку эллипса
+                        Console.Write('#'); // Рисуем точку эллипса
                     }
                 }
             }
