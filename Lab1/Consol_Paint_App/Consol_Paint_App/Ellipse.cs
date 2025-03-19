@@ -10,13 +10,22 @@ namespace Consol_Paint_App
     {
         private int x, y, width, height;
         private ConsoleColor backgroundColor ;
+        public int X => x;
+        public int Y => y;
+        public int Width => width;
+        public int Height => height;
+        public ConsoleColor BackgroundColor => backgroundColor;
         public Ellipse(int x, int y, int width, int height)
+        {
+            SetDimensions(x, y, width, height);
+            this.backgroundColor = ConsoleColor.Black;
+        }
+        public void SetDimensions(int x, int y, params int[] dimensions)
         {
             this.x = x;
             this.y = y;
-            this.width = width;
-            this.height = height;
-            this.backgroundColor = ConsoleColor.Black;
+            this.width = dimensions[0];
+            this.height = dimensions[1];
         }
         public Ellipse() { }
         public void Draw()
@@ -58,7 +67,7 @@ namespace Consol_Paint_App
         }
         public string GetInfo()
         {
-            return $"Ellipse at ({x}, {y}), width: {width}, height: {height}, background: {backgroundColor}";
+            return $"Ellipse: X={X}, Y={Y}, Width={Width}, Height={Height}, BackgroundColor={BackgroundColor}";
         }
     }
 }

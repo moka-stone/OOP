@@ -129,12 +129,31 @@ namespace Consol_Paint_App
             {
                 var settings = new JsonSerializerSettings
                 {
-                    TypeNameHandling = TypeNameHandling.Auto
+                    TypeNameHandling = TypeNameHandling.Auto,
+                    Formatting = Formatting.Indented,
+                    NullValueHandling = NullValueHandling.Ignore
                 };
                 var json = File.ReadAllText(fileName);
-                figures = JsonConvert.DeserializeObject<List<IFigure>>(json,settings);
-                currentFigureIndex = figures.Count - 1; 
-                Console.WriteLine("Figures loaded from " + fileName);
+                var loadedFigures = JsonConvert.DeserializeObject<List<IFigure>>(json, settings);
+                figures.Clear();
+                figures.AddRange(loadedFigures);
+                /*foreach (var figure in loadedFigures)
+                {
+                    if (figure is Rectangle rectangle)
+                    {
+                        figures.Add(new Rectangle(rectangle.X, rectangle.Y, rectangle.Width, rectangle.Height));
+                    }
+                    else if (figure is Triangle triangle)
+                    {
+                        figures.Add(new Triangle(triangle.X, triangle.Y, triangle.Side1, triangle.Side2, triangle.Side1));
+                    }
+                    else if (figure is Ellipse ellipse)
+                    {
+                        figures.Add(new Ellipse(ellipse.X, ellipse.Y, ellipse.Width, ellipse.Height));
+                    }
+                }*/
+                    currentFigureIndex = figures.Count - 1; 
+                    Console.WriteLine("Figures loaded from " + fileName);
             }
             else
             {

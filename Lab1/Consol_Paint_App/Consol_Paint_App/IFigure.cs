@@ -8,6 +8,7 @@ namespace Consol_Paint_App
 {
     public interface IFigure
     {
+        abstract void SetDimensions(int x, int y, params int[] dimensions);
         void Draw();
         void Move(int x, int y);
         void Erase();

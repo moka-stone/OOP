@@ -8,16 +8,28 @@ namespace Consol_Paint_App
 {
     public class Triangle : IFigure
     {
-        private int x, y,side1,side2,side3;
+        private int x, y, side1, side2, side3;
         private ConsoleColor backgroundColor;
-        public Triangle(int x, int y,int side1,int side2,int side3)
+        public int X => x;
+        public int Y => y;
+        public int Side1 => side1;
+        public int Side2 => side2;
+        public int Side3 => side3;
+
+        public ConsoleColor BackgroundColor => backgroundColor;
+        public Triangle(int x, int y, int side1, int side2, int side3)
+        {
+            SetDimensions(x, y, side1, side2, side3);
+            this.backgroundColor = ConsoleColor.Black;
+        }
+        public void SetDimensions(int x, int y, params int[] dimensions)
         {
             this.x = x;
             this.y = y;
-            this.side1 = side1;
-            this.side2 = side2;
-            this.side3 = side3;
-            this.backgroundColor = ConsoleColor.Black;
+            this.side1 = dimensions[0];
+            this.side2 = dimensions[1];
+            this.side3 = dimensions[2];
+
         }
         public Triangle() { }
         public void Draw()
@@ -35,7 +47,7 @@ namespace Consol_Paint_App
             int y1 = y;
             int x2 = x + side1; // вторая вершина
             int y2 = y;
-            
+
             int x3 = x + side1 / 2; // третья вершина
             int y3 = (int)(y - height); // высота
 
@@ -53,7 +65,7 @@ namespace Consol_Paint_App
                 }
                 if (i < height) // Заполняем только если это не последний уровень
                 {
-                    for (int fillX = x1+i+1; fillX < x2-i; fillX++) // Заполнение между краями
+                    for (int fillX = x1 + i + 1; fillX < x2 - i; fillX++) // Заполнение между краями
                     {
                         Console.SetCursorPosition(fillX, y1 - i);
                         Console.Write('#');
@@ -64,7 +76,7 @@ namespace Consol_Paint_App
                 {
                     Console.SetCursorPosition(x3, y3); // Верхняя вершина
                     Console.Write('#');
-                   
+
                 }
             }
 
@@ -88,7 +100,7 @@ namespace Consol_Paint_App
         }
         public string GetInfo()
         {
-            return $"Triangle at ({x}, {y}), side1: {side1}, side2: {side2}, side3: {side3}, background: {backgroundColor}";
+            return $"Triangle: X={X}, Y={Y}, Side1={Side1}, Side2={Side2}, Side3={Side3}, BackgroundColor={BackgroundColor}";
         }
     }
 }
