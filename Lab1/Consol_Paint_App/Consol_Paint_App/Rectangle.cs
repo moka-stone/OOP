@@ -1,4 +1,5 @@
 ﻿using System;
+using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,10 +17,11 @@ namespace Consol_Paint_App
         public int Height => height;
         public ConsoleColor BackgroundColor => backgroundColor;
 
-        public Rectangle(int x, int y, int width, int height)
+        [JsonConstructor]
+        public Rectangle(int x, int y, int width, int height, ConsoleColor backgroundColor)
         {
             SetDimensions(x, y, width, height);
-            this.backgroundColor = ConsoleColor.Black;
+            this.backgroundColor = backgroundColor;
         }
         public void SetDimensions(int x, int y, params int[] dimensions)
         {
@@ -28,7 +30,7 @@ namespace Consol_Paint_App
             this.width = dimensions[0];
             this.height = dimensions[1];
         }
-        public Rectangle() { }
+        
 
         public void Draw()
         {

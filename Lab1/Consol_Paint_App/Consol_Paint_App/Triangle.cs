@@ -1,4 +1,5 @@
 ﻿using System;
+using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,10 +18,11 @@ namespace Consol_Paint_App
         public int Side3 => side3;
 
         public ConsoleColor BackgroundColor => backgroundColor;
-        public Triangle(int x, int y, int side1, int side2, int side3)
+        [JsonConstructor]
+        public Triangle(int x, int y, int side1, int side2, int side3, ConsoleColor backgroundColor)
         {
             SetDimensions(x, y, side1, side2, side3);
-            this.backgroundColor = ConsoleColor.Black;
+            this.backgroundColor = backgroundColor;
         }
         public void SetDimensions(int x, int y, params int[] dimensions)
         {
@@ -31,7 +33,7 @@ namespace Consol_Paint_App
             this.side3 = dimensions[2];
 
         }
-        public Triangle() { }
+        
         public void Draw()
         {
             Console.BackgroundColor = backgroundColor; // Устанавливаем цвет фона

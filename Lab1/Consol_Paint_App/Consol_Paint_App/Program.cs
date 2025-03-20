@@ -58,9 +58,10 @@ namespace Consol_Paint_App
                             int y = int.Parse(Console.ReadLine());
                             int width = int.Parse(Console.ReadLine());
                             int height = int.Parse(Console.ReadLine());
+                            ConsoleColor backgroundColor = ConsoleColor.Black;
                             if (Validator.ValidateRectParams(x, y, width, height))
                             {
-                                canvas.AddFigure(new Rectangle(x, y, width, height));
+                                canvas.AddFigure(new Rectangle(x, y, width, height,backgroundColor));
                             }
                             else { Console.WriteLine("Bad params"); }
                         }
@@ -73,9 +74,10 @@ namespace Consol_Paint_App
                             int side1 = int.Parse(Console.ReadLine());
                             int side2 = int.Parse(Console.ReadLine());
                             int side3 = int.Parse(Console.ReadLine());
+                            ConsoleColor backgroundColor = ConsoleColor.Black;
                             if (Validator.ValidateTriangleParams(x, y, side1, side2, side3))
                             {
-                                canvas.AddFigure(new Triangle(x, y, side1, side2, side3));
+                                canvas.AddFigure(new Triangle(x, y, side1, side2, side3,backgroundColor));
                             }
                             else { Console.WriteLine("Bad params"); }
                         }
@@ -87,9 +89,10 @@ namespace Consol_Paint_App
                             int y = int.Parse(Console.ReadLine());
                             int width = int.Parse(Console.ReadLine());
                             int height = int.Parse(Console.ReadLine());
+                            ConsoleColor backgroundColor = ConsoleColor.Black;
                             if (Validator.ValidateEllipseParams(x, y, width, height))
                             {
-                                canvas.AddFigure(new Ellipse(x, y, width, height));
+                                canvas.AddFigure(new Ellipse(x, y, width, height, backgroundColor));
                             }
                             else { Console.WriteLine("Bad params"); }
                         }

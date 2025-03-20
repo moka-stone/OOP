@@ -130,28 +130,36 @@ namespace Consol_Paint_App
                 var settings = new JsonSerializerSettings
                 {
                     TypeNameHandling = TypeNameHandling.Auto,
-                    Formatting = Formatting.Indented,
                     NullValueHandling = NullValueHandling.Ignore
                 };
                 var json = File.ReadAllText(fileName);
                 var loadedFigures = JsonConvert.DeserializeObject<List<IFigure>>(json, settings);
                 figures.Clear();
                 figures.AddRange(loadedFigures);
-                /*foreach (var figure in loadedFigures)
+                /*foreach(var figure in loadedFigures)
                 {
                     if (figure is Rectangle rectangle)
                     {
+                        Console.WriteLine($"Rect{rectangle.X} ******* {rectangle.Y} ********* {rectangle.Width} ******* {rectangle.Height}");
+                        Thread.Sleep(2000);
                         figures.Add(new Rectangle(rectangle.X, rectangle.Y, rectangle.Width, rectangle.Height));
                     }
-                    else if (figure is Triangle triangle)
+                    if (figure is Triangle triangle)
                     {
+                        Console.WriteLine($"Triangl{triangle.X} ******* {triangle.Y} ********* {triangle.Side1} ******* {triangle.Side2}");
+                        Thread.Sleep(2000);
                         figures.Add(new Triangle(triangle.X, triangle.Y, triangle.Side1, triangle.Side2, triangle.Side1));
+
                     }
-                    else if (figure is Ellipse ellipse)
+                    if (figure is Ellipse ellipse)
                     {
+                        Console.WriteLine($"Ellips{ellipse.X} ******* {ellipse.Y} ********* {ellipse.Width} ******* {ellipse.Height}");
+                        Thread.Sleep(2000);
                         figures.Add(new Ellipse(ellipse.X, ellipse.Y, ellipse.Width, ellipse.Height));
+
                     }
-                }*/
+                }
+                */
                     currentFigureIndex = figures.Count - 1; 
                     Console.WriteLine("Figures loaded from " + fileName);
             }
