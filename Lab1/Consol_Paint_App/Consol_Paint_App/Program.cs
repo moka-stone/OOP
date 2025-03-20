@@ -164,11 +164,11 @@ namespace Consol_Paint_App
                         break;
 
                     case "5":
-                        // Логика отмены действия
+                        canvas.Undo();
                         break;
 
                     case "6":
-                        // Логика повтора действия
+                        canvas.Redo();
                         break;
                 }
 

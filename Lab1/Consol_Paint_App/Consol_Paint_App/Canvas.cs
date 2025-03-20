@@ -12,11 +12,15 @@ namespace Consol_Paint_App
         private List<IFigure> figures = new List<IFigure>();
         private int currentFigureIndex = -1;
 
+        private List<string> actions = new List<string>();
+        private int currentActionIndex = -1;
+        private List<IFigure> redofigures = new List<IFigure>();
+
         public void AddFigure(IFigure figure)
         {
             figures.Add(figure);
+            AddAction("Add");
             currentFigureIndex = figures.Count - 1;
-
         }
         public void DrawFigureArea()
         {
@@ -79,17 +83,17 @@ namespace Consol_Paint_App
             {
                 figures[currentFigureIndex].Erase();
                 figures.RemoveAt(currentFigureIndex);
-                currentFigureIndex = -1;
+                currentFigureIndex--;
             }
         }
         public void ChangeBackgroundCurrentFigure(string color)
         {
             if (currentFigureIndex >= 0) {
-               
+
                 if (color == "Red")
                 {
                     figures[currentFigureIndex].AddBackground(ConsoleColor.Red);
-                    
+
                 }
                 else if (color == "Blue")
                 {
@@ -104,7 +108,7 @@ namespace Consol_Paint_App
                 else
                 {
                     Console.WriteLine("Неверный цвет.");
-                }                        
+                }
             }
         }
         public string GetCurrentFigureInfo()
@@ -136,7 +140,7 @@ namespace Consol_Paint_App
                 var loadedFigures = JsonConvert.DeserializeObject<List<IFigure>>(json, settings);
                 figures.Clear();
                 figures.AddRange(loadedFigures);
-                currentFigureIndex = figures.Count - 1; 
+                currentFigureIndex = figures.Count - 1;
                 Console.WriteLine("Figures loaded from " + fileName);
             }
             else
@@ -144,6 +148,37 @@ namespace Consol_Paint_App
                 Console.WriteLine("File does not exist");
             }
         }
+        public void AddAction(string act)
+        {
+            actions.Add(act);
+            currentActionIndex++;
+        }
+        public void Undo ()
+        {
+            if (actions.Count > 0) 
+            {
+                string action = actions[currentActionIndex];
+                if (action == "Add") 
+                {
+                    redofigures.Add(figures[currentFigureIndex]);
+                    EraseCurrentFigure();
+                }
+                
+            }
+        }
+        public void Redo() 
+        {
+            if (redofigures.Count > 0) 
+            {
+                AddFigure(redofigures[redofigures.Count - 1]);
+                redofigures.RemoveAt(redofigures.Count - 1);
+            }
+
+        }
+
+
+
     }
-    
 }
+    
+
