@@ -136,32 +136,8 @@ namespace Consol_Paint_App
                 var loadedFigures = JsonConvert.DeserializeObject<List<IFigure>>(json, settings);
                 figures.Clear();
                 figures.AddRange(loadedFigures);
-                /*foreach(var figure in loadedFigures)
-                {
-                    if (figure is Rectangle rectangle)
-                    {
-                        Console.WriteLine($"Rect{rectangle.X} ******* {rectangle.Y} ********* {rectangle.Width} ******* {rectangle.Height}");
-                        Thread.Sleep(2000);
-                        figures.Add(new Rectangle(rectangle.X, rectangle.Y, rectangle.Width, rectangle.Height));
-                    }
-                    if (figure is Triangle triangle)
-                    {
-                        Console.WriteLine($"Triangl{triangle.X} ******* {triangle.Y} ********* {triangle.Side1} ******* {triangle.Side2}");
-                        Thread.Sleep(2000);
-                        figures.Add(new Triangle(triangle.X, triangle.Y, triangle.Side1, triangle.Side2, triangle.Side1));
-
-                    }
-                    if (figure is Ellipse ellipse)
-                    {
-                        Console.WriteLine($"Ellips{ellipse.X} ******* {ellipse.Y} ********* {ellipse.Width} ******* {ellipse.Height}");
-                        Thread.Sleep(2000);
-                        figures.Add(new Ellipse(ellipse.X, ellipse.Y, ellipse.Width, ellipse.Height));
-
-                    }
-                }
-                */
-                    currentFigureIndex = figures.Count - 1; 
-                    Console.WriteLine("Figures loaded from " + fileName);
+                currentFigureIndex = figures.Count - 1; 
+                Console.WriteLine("Figures loaded from " + fileName);
             }
             else
             {

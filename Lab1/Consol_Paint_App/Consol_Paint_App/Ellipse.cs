@@ -19,16 +19,20 @@ namespace Consol_Paint_App
         [JsonConstructor]
         public Ellipse(int x, int y, int width, int height,ConsoleColor backgroundColor)
         {
-            SetDimensions(x, y, width, height);
+            //SetDimensions(x, y, width, height);
+            this.x = x;
+            this.y = y;
+            this.width = width;
+            this.height = height;
             this.backgroundColor = backgroundColor;
         }
-        public void SetDimensions(int x, int y, params int[] dimensions)
+        /*public void SetDimensions(int x, int y, params int[] dimensions)
         {
             this.x = x;
             this.y = y;
             this.width = dimensions[0];
             this.height = dimensions[1];
-        }
+        }*/
         public void Draw()
         {
             Console.BackgroundColor = backgroundColor; // Устанавливаем цвет фона

@@ -21,10 +21,15 @@ namespace Consol_Paint_App
         [JsonConstructor]
         public Triangle(int x, int y, int side1, int side2, int side3, ConsoleColor backgroundColor)
         {
-            SetDimensions(x, y, side1, side2, side3);
+            //SetDimensions(x, y, side1, side2, side3);
+            this.x = x;
+            this.y = y;
+            this.side1 = side1;
+            this.side2 = side2;
+            this.side3 = side3;
             this.backgroundColor = backgroundColor;
         }
-        public void SetDimensions(int x, int y, params int[] dimensions)
+        /*public void SetDimensions(int x, int y, params int[] dimensions)
         {
             this.x = x;
             this.y = y;
@@ -32,7 +37,7 @@ namespace Consol_Paint_App
             this.side2 = dimensions[1];
             this.side3 = dimensions[2];
 
-        }
+        }*/
         
         public void Draw()
         {
