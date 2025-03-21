@@ -107,7 +107,7 @@ namespace Consol_Paint_App
                 }
                 else
                 {
-                    Console.WriteLine("Неверный цвет.");
+                    Console.WriteLine("Неверный цвет");
                 }
             }
         }

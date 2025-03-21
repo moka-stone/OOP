@@ -38,13 +38,13 @@ namespace Consol_Paint_App
 
         public void Draw()
         {
-            Console.BackgroundColor = backgroundColor; // Устанавливаем цвет фона
+            Console.BackgroundColor = backgroundColor; 
             for (int i = 0; i < height; i++)
             {
-                Console.SetCursorPosition(x + 1, y + i + 1); // Устанавливаем позицию курсора
-                Console.Write(new string('#', width)); // Рисуем строку из символов
+                Console.SetCursorPosition(x + 1, y + i + 1); 
+                Console.Write(new string('#', width)); 
             }
-            Console.ResetColor(); // Сбрасываем цвет консоли
+            Console.ResetColor();
         }
 
         public void Move(int x, int y)
