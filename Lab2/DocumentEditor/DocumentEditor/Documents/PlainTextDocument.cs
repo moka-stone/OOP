@@ -8,6 +8,5 @@ namespace DocumentEditor.Documents
 {
     public class PlainTextDocument : Document
     {
-
     }
 }

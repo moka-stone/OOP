@@ -1,16 +1,19 @@
-﻿using DocumentEditor.Documents;
+﻿using DocumentEditor;
+using DocumentEditor.Documents;
 class Program 
 {
     static void Main(string[] args) 
     {
-        DocumentManager documentManager = new DocumentManager();
-        string docname = Console.ReadLine();
-        documentManager.CreateDocument(docname);
-        string filename = Console.ReadLine();
-        documentManager.T1234("1234\n5555");
-        documentManager.ShowContent();
-        documentManager.SaveDocument(filename);
+        var documentManager = new DocumentManager();
 
+        Console.WriteLine("Введите тип документа (PlainText, MarkDown, RichText):");
+        string docType = Console.ReadLine();
+        documentManager.CreateDocument(docType);
+
+        var textEditor = new TextEditor(documentManager.GetCurrentDocumentContent());
+        textEditor.Run();
+        documentManager.SetCurrentDocumentContent(textEditor.TransportContent());
+        documentManager.SaveDocument("Textedittest1.txt");
 
     }
 }

@@ -10,7 +10,20 @@ namespace DocumentEditor.Documents
 {
     public class DocumentManager
     {
-        private Document currentDocument;
+        private Document? currentDocument;
+        public string GetCurrentDocumentContent()
+        {
+            if (currentDocument != null)
+            {
+                return currentDocument.Content;
+            }
+            else { throw new Exception("No document selected"); }
+                
+        }
+        public void SetCurrentDocumentContent(string content) 
+        {
+            this.currentDocument.Content = content;
+        }
 
         public void CreateDocument(string type)
         {
@@ -77,15 +90,18 @@ namespace DocumentEditor.Documents
                     throw new ArgumentException("Unsupported format");
             }
         }
-
-        public void ShowContent() 
+        public void DeleteDocument(string filePath)
         {
-            Console.Clear();
-            Console.WriteLine(currentDocument.Content);
-        }
-        public void T1234(string tst) 
-        {
-            currentDocument.Content = tst;
+            if (File.Exists(filePath))
+            {
+                File.Delete(filePath);
+                currentDocument = null; // Очистить текущий документ
+                Console.WriteLine($"Document '{filePath}' has been deleted.");
+            }
+            else
+            {
+                Console.WriteLine($"File '{filePath}' does not exist.");
+            }
         }
     }
 }
