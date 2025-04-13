@@ -41,7 +41,7 @@ namespace Consol_Paint_App
         
         public void Draw()
         {
-            Console.BackgroundColor = backgroundColor; // Устанавливаем цвет фона
+            Console.BackgroundColor = backgroundColor; 
 
             // Вычисляем координаты вершин
             double s = (side1 + side2 + side3) / 2.0; // Полупериметр
@@ -50,15 +50,15 @@ namespace Consol_Paint_App
             // Высота от основания (side1) до вершины (x3, y3)
             int height = (int)((2 * area) / side1);
 
-            int x1 = x; // первая вершина (x, y)
+            int x1 = x; 
             int y1 = y;
-            int x2 = x + side1; // вторая вершина
+            int x2 = x + side1; 
             int y2 = y;
 
-            int x3 = x + side1 / 2; // третья вершина
+            int x3 = x + side1 / 2; 
             int y3 = (int)(y - height); // высота
 
-            // Отрисовка треугольника
+            
             // Условия для рисования треугольника
             for (int i = 0; i <= height; i++)
             {
@@ -87,7 +87,7 @@ namespace Consol_Paint_App
                 }
             }
 
-            Console.ResetColor(); // Сбрасываем цвет консоли
+            Console.ResetColor(); 
         }
 
         public void Move(int x, int y)

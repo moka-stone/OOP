@@ -7,7 +7,8 @@ using System.Threading.Tasks;
 
 namespace Consol_Paint_App
 {
-    public class Ellipse : IFigure
+    public class Ellipse :
+        IFigure
     {
         private int x, y, width, height;
         private ConsoleColor backgroundColor ;
