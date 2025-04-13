@@ -6,13 +6,10 @@ class Program
     {
         var documentManager = new DocumentManager();
 
-        Console.WriteLine("Введите тип документа (PlainText, MarkDown, RichText):");
-        string docType = Console.ReadLine();
-        documentManager.CreateDocument(docType);
+        documentManager.OpenDocument("Textedittest1.txt");
 
-        var textEditor = new TextEditor(documentManager.GetCurrentDocumentContent());
-        textEditor.Run();
-        documentManager.SetCurrentDocumentContent(textEditor.TransportContent());
+        var textEditor = new TextEditor(documentManager.GetCurrentDocumentContent());      
+        documentManager.SetCurrentDocumentContent(textEditor.Run());
         documentManager.SaveDocument("Textedittest1.txt");
 
     }
