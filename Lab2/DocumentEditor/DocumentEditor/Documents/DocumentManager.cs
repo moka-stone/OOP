@@ -53,6 +53,8 @@ namespace DocumentEditor.Documents
                     break;
                 default: throw new Exception("Unsupported file extension");
             }
+            Console.WriteLine("Opened text:");
+            Console.WriteLine(currentDocument.Content);
         }
 
         private void OpenTxtFile(string filePath) 
