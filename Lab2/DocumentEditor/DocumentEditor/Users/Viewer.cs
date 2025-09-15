@@ -11,29 +11,28 @@ namespace DocumentEditor.Users
 {
     public class Viewer : IUserRole
     {
-        public void UOpenDocument(DocumentManager document)
+        public Viewer() { }
+        public void UOpenDocument(DocumentManager documentManager, string fileName, string creatorId)
         {
-            Console.WriteLine("Write filepath");
-            string filepath = Console.ReadLine();
-            document.OpenDocument(filepath);
+            documentManager.OpenDocument(fileName, creatorId);
         }
-        public void UCreateDocument(DocumentManager document)
+        public void UCreateDocument(DocumentManager documentManager, string fileName, string content, string type, string creatorId)
         {
-            Console.WriteLine("Viewer can't create.");           
+            throw new UnauthorizedAccessException("Viewers cannot create documents");
         }
 
-        public void UEditDocument(DocumentManager document,TextEditor text)
+        public void UEditDocument(DocumentManager documentManager, Document document, string newContent)
         {
-            Console.WriteLine("Viewer cannot edit documents.");
+            throw new UnauthorizedAccessException("Viewers cannot edit documents");
         }
-        public void USaveDocument(DocumentManager document)
+        public void USaveDocument(DocumentManager documentManager, Document document, string fileName)
         {
-            Console.WriteLine("Viewer cannot save documents.");
+            throw new UnauthorizedAccessException("Viewers cannot save documents");
         }
 
         public void ManagePermissions(User user)
         {
-            Console.WriteLine("Viewer cannot manage permissions.");
+            throw new UnauthorizedAccessException("Viewers cannot manage permissions");
         }
     }
 }

@@ -1,37 +1,33 @@
-﻿
-using DocumentEditor.Documents;
+﻿using DocumentEditor.Documents;
 
 namespace DocumentEditor.Users
 {
     public class Editor : IUserRole
     {
-        public void UOpenDocument(DocumentManager document)
+        public void UOpenDocument(DocumentManager documentManager, string fileName, string creatorId)
         {
-            Console.WriteLine("Write filepath");
-            string filepath = Console.ReadLine();
-            document.OpenDocument(filepath);
-        }
-        public void UCreateDocument(DocumentManager document)
-        {
-            Console.WriteLine("Write type of document(PlainText,MarkDown,RichText)");
-            string type = Console.ReadLine();
-            document.CreateDocument(type);
+            documentManager.OpenDocument(fileName, creatorId);
         }
 
-        public void UEditDocument(DocumentManager document, TextEditor text)
+        public void UCreateDocument(DocumentManager documentManager, string fileName, string content, string type, string creatorId)
         {
-            document.SetCurrentDocumentContent(text.Run());
+            documentManager.CreateDocument(fileName, content, type, creatorId);
         }
-        public void USaveDocument(DocumentManager document)
+
+        public void UEditDocument(DocumentManager documentManager, Document document, string newContent)
         {
-            Console.WriteLine("Write name.(txt,json,xml)");
-            string name = Console.ReadLine();
-            document.SaveDocument(name);
+            document.Content = newContent;
+        }
+
+        public void USaveDocument(DocumentManager documentManager, Document document, string fileName)
+        {
+            documentManager.SaveDocument(document, fileName);
         }
 
         public void ManagePermissions(User user)
         {
-            Console.WriteLine("Editor cannot manage permissions.");
+            // Редактор не может управлять правами пользователей
+            throw new System.UnauthorizedAccessException("Editors cannot manage permissions");
         }
     }
 }

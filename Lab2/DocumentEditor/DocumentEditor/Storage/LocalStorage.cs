@@ -1,0 +1,25 @@
+namespace DocumentEditor.Storage
+{
+    public class LocalStorage : IStorageImplementor
+    {
+        public void Save(string path, string content)
+        {
+            File.WriteAllText(path, content);
+        }
+
+        public string Load(string path)
+        {
+            return File.ReadAllText(path);
+        }
+
+        public void Delete(string path)
+        {
+            File.Delete(path);
+        }
+
+        public bool Exists(string path)
+        {
+            return File.Exists(path);
+        }
+    }
+} 

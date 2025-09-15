@@ -8,5 +8,13 @@ namespace DocumentEditor.Documents
 {
     public class RichTextDocument : Document
     {
+        public RichTextDocument(string creatorId) : base(creatorId)
+        {
+        }
+
+        public override string GetFileExtension()
+        {
+            return ".rtf";
+        }
     }
 }

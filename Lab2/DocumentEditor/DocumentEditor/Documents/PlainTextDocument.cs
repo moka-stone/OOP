@@ -8,5 +8,13 @@ namespace DocumentEditor.Documents
 {
     public class PlainTextDocument : Document
     {
+        public PlainTextDocument(string creatorId) : base(creatorId)
+        {
+        }
+
+        public override string GetFileExtension()
+        {
+            return ".txt";
+        }
     }
 }
